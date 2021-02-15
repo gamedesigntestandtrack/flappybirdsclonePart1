@@ -1,0 +1,37 @@
+ <body style="height: 100vh; background: #111; text-align: center;">
+  <canvas id="c" width="400" height="400"></canvas>
+  
+
+          
+  <script>
+      
+    //set up context
+    context = c.getContext("2d");
+    //create bird
+    const bird = new Image();
+    bird.src = "bird.png";
+    //create variables
+    var canvasSize = 400;
+    var birdSize=30;
+    var birdX = 0;
+    var birdY =200;
+    var birdDY = 0;
+      
+    var score = 0;
+    var bestScore=0;
+    var interval = 30; //the speed at which the game is played
+        
+            
+      
+      setInterval(() => {
+      context.fillStyle = "skyblue";
+      context.fillRect(0,0,canvasSize,canvasSize); // Draw sky
+      birdY -= birdDY -= 0.5; // Gravity
+      context.drawImage(bird, birdX, birdY, birdSize, birdSize); // Draw bird (multiply the birdSize by a number to adjust size)
+      context.fillStyle = "black";
+      context.fillText(`Flappy Birds`, 170, 10); //x and y
+      context.fillText(`Score: ${score++}`,350, 380); // Draw score
+           }, interval)
+  </script>
+</body>
+ 
